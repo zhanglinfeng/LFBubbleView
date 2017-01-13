@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'LFBubbleView'
-s.version = '1.0'
+s.version = '1.1'
 s.license = { :type => "MIT", :file => "LICENSE" }
 s.summary = '方便灵活的气泡框，可设置边框，三角大小位置，颜色，圆角，甚至自定义里面的内容 '
 s.homepage = 'https://github.com/zhanglinfeng/LFBubbleView'

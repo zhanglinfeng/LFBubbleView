@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, LFTriangleDirection) {
 @property (nonatomic, strong) UILabel *lbTitle;//提示文字
 @property (nonatomic) LFTriangleDirection direction;//三角方向，默认朝下
 @property (nonatomic, assign) CGFloat dismissAfterSecond;//hideAfterSecond秒后自动消失，不设置则不自动消失
-@property (nonatomic, strong) NSString *showOnceKey;//仅显示一次的提示要设置Key
+@property (nonatomic, strong) NSString *showOnceKey;//如果设置了Key，该气泡只显示一次（比如某个新功能只需要提示用户一次）
 
 //优先使用triangleXY。如果triangleXY和triangleXYScale都不设置，则三角在中间
 @property (nonatomic, assign) CGFloat triangleXY;//三角中心的x或y（三角朝上下代表x,三角朝左右代表y）
@@ -52,5 +52,11 @@ typedef NS_ENUM(NSInteger, LFTriangleDirection) {
  *  @param point 三角顶端位置
  */
 - (void)showInPoint:(CGPoint)point;
+
+/**来回平移动画*/
+- (void)doTranslationAnimate;
+
+/**弹跳动画*/
+- (void)doSpringAnimate;
 
 @end

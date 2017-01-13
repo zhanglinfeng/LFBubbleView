@@ -261,10 +261,50 @@
     self.lbTitle.frame = CGRectMake(5, 5, self.contentView.frame.size.width - 10, self.contentView.frame.size.height - 10);
 }
 
-- (void)doAnimate {
-    CGFloat offset = self.direction == LFTriangleDirection_Down ? -5 : 5;
+/**来回平移动画*/
+- (void)doTranslationAnimate{
+    CGFloat animateGap = 0.35;
+    CGFloat timeInterval = animateGap * 2;
+    CGFloat offsetX = 0;
+    CGFloat offsetY = 0;
+    if (self.direction == LFTriangleDirection_Down) {
+        offsetY = -5;
+    } else if (self.direction == LFTriangleDirection_Up) {
+        offsetY = 5;
+    } else if (self.direction == LFTriangleDirection_Left) {
+        offsetX = 5;
+    } else if (self.direction == LFTriangleDirection_Right) {
+        offsetX = -5;
+    }
+    
+    [UIView animateKeyframesWithDuration:timeInterval delay:0 options:UIViewKeyframeAnimationOptionRepeat animations:^{
+        
+        [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:animateGap animations:^{
+            self.center = CGPointMake(self.center.x + offsetX, self.center.y + offsetY);
+        }];
+        [UIView addKeyframeWithRelativeStartTime:animateGap relativeDuration:animateGap animations:^{
+            self.center = CGPointMake(self.center.x - offsetX, self.center.y - offsetY);
+        }];
+        
+    } completion:^(BOOL finished) {
+        //
+    }];
+}
+
+- (void)doSpringAnimate {
+    CGFloat offsetX = 0;
+    CGFloat offsetY = 0;
+    if (self.direction == LFTriangleDirection_Down) {
+        offsetY = -5;
+    } else if (self.direction == LFTriangleDirection_Up) {
+        offsetY = 5;
+    } else if (self.direction == LFTriangleDirection_Left) {
+        offsetX = 5;
+    } else if (self.direction == LFTriangleDirection_Right) {
+        offsetX = -5;
+    }
     [UIView animateWithDuration:3 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:2 options:UIViewAnimationOptionRepeat animations:^{
-        self.center = CGPointMake(self.center.x, self.center.y + offset);
+        self.center = CGPointMake(self.center.x + offsetX, self.center.y + offsetY);
     } completion:^(BOOL finished) {
         
     }];

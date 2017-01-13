@@ -42,6 +42,7 @@
     _bubbleView.color = [UIColor orangeColor];
     [self.view addSubview:_bubbleView];
     [_bubbleView showInPoint:CGPointMake(_viewTarget.center.x, _viewTarget.center.y + 8)];
+    [_bubbleView doTranslationAnimate];
     
 }
 - (IBAction)down:(id)sender {
@@ -62,6 +63,7 @@
     _bubbleView.triangleXY = 20;
     [self.view addSubview:_bubbleView];
     [_bubbleView showInPoint:CGPointMake(_viewTarget.center.x + 8, _viewTarget.center.y)];
+    [_bubbleView doSpringAnimate];
 }
 - (IBAction)right:(id)sender {
     NSString *strTip = @"三角在1/4位置";
@@ -70,6 +72,7 @@
     _bubbleView.direction = LFTriangleDirection_Right;
     _bubbleView.lbTitle.text = strTip;
     _bubbleView.triangleXYScale = 1.0f/3.0f;
+    _bubbleView.dismissAfterSecond = 5;
     [self.view addSubview:_bubbleView];
     [_bubbleView showInPoint:CGPointMake(_viewTarget.center.x - 8, _viewTarget.center.y)];
 }

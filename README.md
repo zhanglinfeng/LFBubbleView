@@ -1,6 +1,7 @@
 # LFBubbleView
 方便灵活的气泡框，可设置边框，三角大小位置，颜色，圆角，甚至自定义里面的内容<br/>
-支持CocoaPods
+支持CocoaPods<br/>
+pod 'LFBubbleView'
 
 1.基本使用方法
 -----------------------------------  
